@@ -919,14 +919,16 @@
 		26F72A7F14032D2900A7935E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Simperium;
 				TargetAttributes = {
 					26F72A8714032D2A00A7935E = {
-						DevelopmentTeam = QXKWK6Q52N;
+						DevelopmentTeam = MG23SG2HLP;
+						ProvisioningStyle = Automatic;
 					};
 					466FFEA617CC10A800399652 = {
-						DevelopmentTeam = PZYM8XX95Q;
+						DevelopmentTeam = MG23SG2HLP;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -1096,7 +1098,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B51D44821945EF7900496889 /* ShellScript */ = {
@@ -1149,7 +1151,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nIDENTITY=\"Developer ID Application: Codality, Inc.\"\nfind \"$LOCATION\" -name '*.framework' -exec codesign --verbose --force --sign \"$IDENTITY\" {}/Versions/Current \\;\ncodesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/../XPCServices/com.andymatuschak.Sparkle.SandboxService.xpc\"\n";
+			shellScript = "##LOCATION=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\n##IDENTITY=\"Developer ID Application: Codality, Inc.\"\n##find \"$LOCATION\" -name '*.framework' -exec codesign --verbose --force --sign \"$IDENTITY\" {}/Versions/Current \\;\n##codesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/../XPCServices/com.andymatuschak.Sparkle.SandboxService.xpc\"\n";
 		};
 		BADACE73845227A304509AD9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1193,7 +1195,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1402,7 +1404,9 @@
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -1430,6 +1434,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = SmartNote;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 			};
@@ -1444,7 +1449,9 @@
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
@@ -1464,6 +1471,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = SmartNote;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 			};
@@ -1476,9 +1484,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MG23SG2HLP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"",
@@ -1498,7 +1507,7 @@
 					"-all_load",
 					"${inherited}",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.Simplenote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartnms.Simplenote;
 				PRODUCT_NAME = Simplenote;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -1514,10 +1523,11 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application: Codality, Inc. (QXKWK6Q52N)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = MG23SG2HLP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"",
@@ -1542,7 +1552,7 @@
 					"-all_load",
 					"${inherited}",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.Simplenote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartnms.Simplenote;
 				PRODUCT_NAME = Simplenote;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -1562,6 +1572,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = MG23SG2HLP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"/**",
@@ -1586,7 +1597,7 @@
 					"${inherited}",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartnms.SimplenoteMac;
 				PRODUCT_NAME = Simplenote;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -1602,9 +1613,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Simplenote.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Automattic, Inc. (PZYM8XX95Q)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: Automattic, Inc. (PZYM8XX95Q)";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MG23SG2HLP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External\"/**",
@@ -1629,9 +1641,9 @@
 					"${inherited}",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.SimplenoteMac;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartnms.SimplenoteMac;
 				PRODUCT_NAME = Simplenote;
-				PROVISIONING_PROFILE = "b50b6f62-2cc2-42cc-ae26-970c69eb9df9";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=macosx*]" = "b50b6f62-2cc2-42cc-ae26-970c69eb9df9";
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
